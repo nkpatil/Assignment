@@ -1,19 +1,20 @@
-First of all enter into employee directory.
-Then to run loopback server write command in terminal: " slc run " (Please make sure that you are in employee folder)
-Now your loopback server is running at "http://ip:3000/" (capy and paste this link in url)
-There are two panels in url:
-  1. Employee entry: You can enter employee details in input fields and press "Add employee" button to submit employee details.
-  2. Employee List: You'll get employees list (name and designation) that saved in mongodb database.
-  
 SSH login procedure:
-1. Ask me my ip
-2. ssh naresh@my_ip
-3. enter password gpnaresh22
-4. visit the url: my_ip:3000
-5. You will see the page
-start the server before visiting the url
+1. Please call me and ask me my ip address. Let's assume my ip is my_ip.
+2. Enter the following command into the terminal to login:
+	ssh naresh@my_ip
+3. Enter the following password: gpnaresh22
+
+After successfully logging in to my computer:
+  - First of all, enter the following command into the employee directory: "cd employee"
+  - Then to run the loopback server, write the following command in the terminal: "slc run" (Make sure that you are in the employee folder)
+  - Now your loopback server is running at "http://my_ip:3000/" (visit the url: my_ip:3000)
+  - You will see the page with two panels in the url:
+    1. Employee entry: You can enter employee details into the input fields and press the "Add employee" button to submit employee details.
+    2. Employee List: You will get the list of employees(name and designation) that is saved in the mongo database.
+    
+  - Press "CTRL+C" in the terminal to stop the server.
   
-To check mongodb database:
-  - Write "mongo" in terminal. Then you'll entered into mongodb.
-  - Write "use test" to enter into database named test.
-  - Then to check the employee entries: write command "db.employee.find()" - It will get all entries saved in employee table.
+To check the mongo database:
+  - Write "mongo" in the terminal. Then you will enter into mongodb.
+  - Write "use test" to enter into the database named test.
+  - Then to check the employee entries, write the command "db.employee.find()" - It will retrieve all entries saved in the employee table.
