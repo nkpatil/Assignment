@@ -1,0 +1,45 @@
+var app = angular.module('app', ['ngResource','lbServices']);
+
+app.controller('EmployeeController', [
+  '$scope',
+  'Employee',
+  function($scope, Employee) {
+
+    $scope.newEmployee = {};
+    $scope.employees = Employee.query();
+
+    //Add New Employee
+    $scope.addNewEmployee = function(employee) {
+      
+      //LoopBack Angular SDK goodness
+      Employee.create(employee,
+        // success
+        function(response){
+          $scope.newEmployee = {};
+          $scope.employees = Employee.query();
+          console.log('good add employee: ' + JSON.stringify(response));
+        },
+        // error
+        function(response){
+          console.log('bad add employee: ' + JSON.stringify(response));
+        }
+      );
+    };
+
+    //Set Employee Completed State
+    $scope.setCompleted = function(employee){
+      
+      //LoopBack Angular SDK goodness
+      Employee.upsert(employee,
+        // success
+        function(response){
+          console.log('good employee update: ' + JSON.stringify(response));
+        },
+        // error
+        function(response){
+          console.log('bad employee update: ' + JSON.stringify(response));
+        }
+      );
+    };
+  }
+]);

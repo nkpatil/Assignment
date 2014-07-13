@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Employee Entry Form</title>
+    <style>
+      body{
+        font-size:16px;
+        font-family:"Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+      }
+      header h1 {
+        font-size:130%;
+        font-weight:500;
+        color:#444444;
+      }
+    </style>
+    <link href="css/bootstrap.css" rel="stylesheet">
+  </head>
+  <body ng-app="app">
+    <div class="container" ng-controller="EmployeeController" ng-cloak>
+      <table width="100%" class="table">
+        <tr>
+          <td valign="top" width="50%" style="border-right:2px solid gray;">
+            <header><h1>Employee Entry</h1></header>
+            <!-- add employee form -->
+            <form name="AddEmployeeForm">
+              <table class="table">
+                <tr>
+                  <td><label>Name: </label></td>
+                  <td><input ng-model="newEmployee.name" name="EmployeeName" type="text" required /> (Required) <br/></td>
+                </tr>
+                <tr>
+                  <td><label>Designation: </label></td>
+                  <td><input ng-model="newEmployee.designation" name="EmployeeDesignation" type="text" /> <br/></td>
+                </tr>
+                <tr>
+                  <td><label>Phone: </label></td>
+                  <td><input ng-model="newEmployee.phone" name="EmployeePhone" type="text" /><br/></td>
+                </tr>
+                <tr>
+                  <td><label>Email: </label></td>
+                  <td><input ng-model="newEmployee.email" name="EmployeeEmail" type="text" /><br/></td>
+                </tr>
+                <tr><td colspan="2"><input type="button" class="btn btn-primary" ng-click="addNewEmployee(newEmployee)" ng-disabled="AddEmployeeForm.EmployeeName.$invalid" value="Add Employee"></td></tr>
+              </table>
+            </form>
+          </td>
+          <td valign="top">
+            <header><h1>Employee List</h1></header>
+            <!-- first time greeting message -->
+            <p ng-hide="employees.length">No employees saved.</p>
+            
+            <!-- list of employees -->
+            <div id="employees">
+              <table width="100%" class="table table-striped">
+                <tr style="font-weight:bold;"> <td>Name</td> <td>Designation</td> </tr>
+                <tr>
+                  <td>
+                    <div ng-repeat="employee in employees">
+                        <label> {{employee.name}} </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div ng-repeat="employee in employees">
+                        <label> {{employee.designation}} </label>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script src="./vendor/angular.js"></script>
+    <script src="./vendor/angular-resource.js"></script>
+    <script src="./lb-services.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
